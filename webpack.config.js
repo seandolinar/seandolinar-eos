@@ -10,7 +10,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@components': path.resolve(__dirname, 'src/components')
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@styles': path.resolve(__dirname, 'src/styles')
     }
   },
   module: {
@@ -19,7 +20,12 @@ module.exports = {
         test: /\.(js)$/,
         loaders: 'babel-loader',
         include: path.join(__dirname, 'src')
-      }
+      },
+      {
+        test   : /\.scss$/,
+        loader : ['style-loader', 'css-loader', 'sass-loader'],
+        include: path.join(__dirname, 'src')
+    }
     ]
   }
 };
