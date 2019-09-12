@@ -2,12 +2,13 @@ import React, {useState, useContext, useEffect} from 'react';
 
 import {ContextBlock} from './context';
 
-import {apiGetInfo, apiGetBlock} from '@src/data/api';
+import {apiGetInfo, apiGetBlock, apiGetABI} from '@src/data/api';
 
 
 const DataContainer = ({children}) => {
 
-    const [dataBlocks, setDataBlocks] = useState([])
+    const [dataBlocks, setDataBlocks] = useState([]);
+    const [dataABI, setDataABI] = useState([]);
 
 
 
@@ -15,7 +16,6 @@ const DataContainer = ({children}) => {
         const data = [];
 
         const getBlock = (res) => {
-            // data.push(res)
             return apiGetBlock(res.last_irreversible_block_id)
         }
 
@@ -30,24 +30,40 @@ const DataContainer = ({children}) => {
 
         const respInfo = await apiGetInfo();
 
-        // const respBlock = await apiGetBlock(respInfo.last_irreversible_block_id);
-
         let respBlock;
         for (let i = 0; i < 10; i++) {
 
             if (i === 0) {
-                // respBlock = await apiGetBlock(respInfo.last_irreversible_block_id);
                 respBlock = await apiGetBlock(respInfo.head_block_id);
             }
             else {
                 respBlock = await apiGetBlock(respBlock.previous);
             }            
-            data.push(respBlock);
+            data.push({data: respBlock, isExpanded: false});
         }
 
         setDataBlocks(data);
 
     };
+
+    async function getDataABI({blockId, actionId, name}) {
+        const respABI = await apiGetABI(name);
+
+        setDataABI(dataABI.concat({...respABI, blockId, actionId}));
+    }
+
+    
+
+    const toggleBlockDetail = (blockId) => {
+        const dataBlocksToggled = dataBlocks.map(obj => {
+            if (obj.data.id === blockId) {
+                obj.isExpanded = !obj.isExpanded;
+            }
+            return obj
+        })
+
+        setDataBlocks(dataBlocksToggled);
+    }
 
     useEffect(() => {
         getDataBlocks()
@@ -57,8 +73,11 @@ const DataContainer = ({children}) => {
     return <ContextBlock.Provider 
         value={{
             dataBlocks,
+            dataABI,
             methods: {
-                getDataBlocks
+                getDataBlocks,
+                getDataABI,
+                toggleBlockDetail
             }
         }}
     >

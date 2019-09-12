@@ -6,6 +6,8 @@ export const apiGetInfo = () => rpc.get_info();
 
 export const apiGetBlock = (blockId) => rpc.get_block(blockId);
 
+export const apiGetABI = (name) => rpc.get_abi(name);
+
 
 // apiGetInfo.then(res => {
 //     rpc.get_block(res.last_irreversible_block_num).then(res => {
@@ -22,7 +24,3 @@ export const apiGetBlock = (blockId) => rpc.get_block(blockId);
 
 // }, 1000)
 
-
-// window.setTimeout(() => {
-//     const respBlock = rpc.get_abi('newdexpublic')
-// }, 2000)
