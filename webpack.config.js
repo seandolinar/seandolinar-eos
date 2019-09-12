@@ -1,8 +1,8 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
-  
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
@@ -11,7 +11,8 @@ module.exports = {
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
-      '@styles': path.resolve(__dirname, 'src/styles')
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@src': path.resolve(__dirname, 'src')
     }
   },
   module: {

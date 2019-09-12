@@ -1,32 +1,28 @@
 const { JsonRpc } = require('eosjs');
 
-console.log(JsonRpc)
-
-console.log(fetch)
-
 const rpc = new JsonRpc('https://api.eosnewyork.io', { fetch });
 
-console.log(rpc)
+export const apiGetInfo = () => rpc.get_info();
 
-// const resp = rpc.get_table_rows({
-//     json: true,              // Get the response as json
-//     code: 'eosio.token',     // Contract that we target
-//     scope: 'testacc',         // Account that owns the data
-//     table: 'accounts',        // Table name
-//     limit: 10,               // Maximum number of rows that we want to get
-//     reverse: false,         // Optional: Get reversed data
-//     show_payer: false,      // Optional: Show ram payer
-// });
-
-const resp = rpc.get_info()
-
-console.log(resp);
-
-window.setTimeout(() => {
-    const respBlock = rpc.get_block(78904214)
-}, 1000)
+export const apiGetBlock = (blockId) => rpc.get_block(blockId);
 
 
-window.setTimeout(() => {
-    const respBlock = rpc.get_abi('newdexpublic')
-}, 2000)
+// apiGetInfo.then(res => {
+//     rpc.get_block(res.last_irreversible_block_num).then(res => {
+//         console.log(res)
+//     })
+// })
+
+
+
+// window.setTimeout(() => {
+//     const respBlock = rpc.get_block('04b3fb9510152702e437a1d549285412c5c210e7f29aa6ae14e7677fe45df1ea')
+
+
+
+// }, 1000)
+
+
+// window.setTimeout(() => {
+//     const respBlock = rpc.get_abi('newdexpublic')
+// }, 2000)

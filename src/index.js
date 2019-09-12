@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom';
 
 import './data/api.js';
 
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
+import App from './App';
 
 
 
-ReactDOM.render(<Layout />, document.getElementById('root-eos-blockchain'))
+ReactDOM.render(<App />, document.getElementById('root-eos-blockchain'))
 
 
 
