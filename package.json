@@ -1,0 +1,29 @@
+{
+  "name": "seandolinar-eos",
+  "version": "0.0.0",
+  "description": "Lists the most recent blocks from the eosio blockchain",
+  "scripts": {
+    "test": "jest",
+    "start:dev": "webpack-dev-server",
+    "start:build": "webpack"
+  },
+  "author": "Sean Dolinar",
+  "license": "MIT",
+  "dependencies": {
+    "eosjs": "^20.0.0",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "jest": "^24.9.0",
+    "webpack-dev-server": "^3.8.0"
+  }
+}
