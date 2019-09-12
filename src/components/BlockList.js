@@ -37,7 +37,7 @@ const BlockList = ({ onClick, children }) => {
 
         const liActions = dataActions.map((obj, index) => {
 
-            constactionABI = dataABI.find(abi => {
+            const actionABI = dataABI.find(abi => {
                 console.log(abi.actionId, `${obj.account}-${index}`)
                 return abi.actionId === `${obj.account}-${index}`
             })
