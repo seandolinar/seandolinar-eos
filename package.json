@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "start:dev": "webpack-dev-server",
-    "start:build": "NODE_ENV=production webpack"
+    "start:build": "NODE_ENV=production webpack",
+    "start:build:serve": "NODE_ENV=production webpack; node server.js"
   },
   "author": "Sean Dolinar",
   "license": "MIT",
