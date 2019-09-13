@@ -9,7 +9,7 @@ import App from './App';
 
 
 
-ReactDOM.render(<App />, document.getElementById('root-eos-blockchain'))
+ReactDOM.render(<App />, document.getElementById('root-eos-blockchain'));
 
 
 

@@ -42,6 +42,7 @@ ol, ol li {
         .block-list-item {
             border: 1px solid #000;
             margin: 1em 0;
+            animation: block-on 400ms ease-in-out;
 
             pre {
                 overflow: auto;
@@ -140,5 +141,17 @@ ol, ol li {
             background-color: rgba(slategray, .1);
             outline: none;
         }
+    }
+}
+
+
+@keyframes block-on {
+    from {
+        opacity: 0;
+        margin-top: 6em;
+    }
+    to {
+        opacity: 1;
+        margin-top: 1em;
     }
 }

@@ -6,5 +6,5 @@ export default () => {
 
     const {methods} = useContext(ContextBlock);
 
-    return <button class="button-update" onClick={methods.getDataBlocks}>{'Update'}</button>
+    return <button className="button-update" onClick={methods.getDataBlocks}>{'Update'}</button>
 }
