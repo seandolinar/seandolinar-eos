@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 
 import { ContextBlock } from '@src/context';
 
+import TemplateABI from './TemplateABI';
+
 const BlockList = ({ onClick, children }) => {
 
     const {
@@ -26,27 +28,29 @@ const BlockList = ({ onClick, children }) => {
             return prev + cur.trx.transaction.actions.length
         }, 0)
 
-        const dataActions = data.transactions.reduce((prev, cur) => {
+        let dataActions = data.transactions.reduce((prev, cur) => {
 
             if (!cur.trx || !cur.trx.transaction) {
                 return prev;
             }
 
             return prev.concat(cur.trx.transaction.actions);
-        }, []);
+        }, [])
+
+        dataActions = dataActions.filter(obj => obj.account === 'eosio.token');
 
         const liActions = dataActions.map((obj, index) => {
 
             const actionABI = dataABI.find(abi => {
-                console.log(abi.actionId, `${obj.account}-${index}`)
                 return abi.actionId === `${obj.account}-${index}`
             })
+
 
             return <li key={`${obj.account}-${index}`}>
                 <div>{obj.account}</div>
                 <div>{obj.name}</div>
                 <button onClick={() => methods.getDataABI({ blockId: data.id, actionId: `${obj.account}-${index}`, name: obj.account })}>Get ABI</button>
-                {JSON.stringify(actionABI)}
+                <TemplateABI actionABI={actionABI} actionData={obj} />
             </li>
         })
         
@@ -58,6 +62,7 @@ const BlockList = ({ onClick, children }) => {
                 <div>{data.timestamp}</div>
                 <div>Total Transactions: {countTransactions}</div>
                 <div>Actions: {countActions}</div>
+                <div>eosio.token Actions: {dataActions.length}</div>
             </div>
 
             {/* {!!isExpanded && <div>{JSON.stringify(data)}</div>} */}
