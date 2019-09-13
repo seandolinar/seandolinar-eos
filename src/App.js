@@ -4,7 +4,7 @@ import DataContainer from './DataContainer';
 import Button from './components/Button';
 import BlockList from './components/BlockList';
 
-
+import '@styles/App.scss';
 
 const App = () => {
     

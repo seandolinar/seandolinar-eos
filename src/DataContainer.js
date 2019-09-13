@@ -39,7 +39,7 @@ const DataContainer = ({children}) => {
             else {
                 respBlock = await apiGetBlock(respBlock.previous);
             }            
-            data.push({data: respBlock, isExpanded: false});
+            data.push({data: respBlock, isExpanded: {Raw: false, EOSAction: false}});
         }
 
         setDataBlocks(data);
@@ -52,12 +52,28 @@ const DataContainer = ({children}) => {
         setDataABI(dataABI.concat({...respABI, blockId, actionId}));
     }
 
+    const destroyDataABI = ({blockId, actionId}) => {
+        const updatedDataABI = dataABI.filter(obj => obj.blockId !== blockId && obj.actionId !== actionId)
+
+        setDataABI(updatedDataABI)
+    }
     
 
-    const toggleBlockDetail = (blockId) => {
+    const toggleBlockExpand = ({blockId, type}) => {
         const dataBlocksToggled = dataBlocks.map(obj => {
             if (obj.data.id === blockId) {
-                obj.isExpanded = !obj.isExpanded;
+                obj.isExpanded[type] = !obj.isExpanded[type];
+            }
+            return obj
+        })
+
+        setDataBlocks(dataBlocksToggled);
+    }
+
+    const toggleEOSActionDetail = ({blockId, type}) => {
+        const dataBlocksToggled = dataBlocks.map(obj => {
+            if (obj.data.id === blockId) {
+                obj.isExpanded[type] = !obj.isExpanded[type];
             }
             return obj
         })
@@ -77,7 +93,8 @@ const DataContainer = ({children}) => {
             methods: {
                 getDataBlocks,
                 getDataABI,
-                toggleBlockDetail
+                toggleBlockExpand,
+                destroyDataABI
             }
         }}
     >
