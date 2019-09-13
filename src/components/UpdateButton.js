@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 
 import { ContextBlock } from '../context';
 
-export default ({onClick, children}) => {
+export default () => {
 
     const {methods} = useContext(ContextBlock);
 
