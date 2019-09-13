@@ -16,7 +16,7 @@ const TemplateABI =  ({actionABI=null, actionData: { data: contractData = {}}}) 
     
     const ricardianContractHtml = Mustache.render(ricardianContractTemplate, ricardianContractData)
 
-    return <div dangerouslySetInnerHTML={{__html: ricardianContractHtml}}></div>
+    return <div className="template-abi" dangerouslySetInnerHTML={{__html: ricardianContractHtml}}></div>
 }
 
 

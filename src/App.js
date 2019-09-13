@@ -9,8 +9,9 @@ import './styles/App.scss';
 const App = () => {
     
     return <DataContainer>
-        <BlockList />
+        <h1>Last 10 Blocks on EOS.IO</h1>
         <UpdateButton />
+        <BlockList />
     </DataContainer>
 }
 

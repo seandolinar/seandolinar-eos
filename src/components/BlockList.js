@@ -58,19 +58,19 @@ const BlockList = () => {
 
 
 
-        return <li key={data.id}>
-            <div onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'Raw' })}>
+        return <li key={data.id} className="block-list-item">
+            <div className="block-list-item-header" onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'Raw' })}>
                 <BlockHeader data={data} count={count} />
             </div>
-            <div onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'EOSAction' })}>eosio.token Actions: {dataActions.length}</div>
             {!!isExpanded.Raw && <div><pre>{JSON.stringify(data)}</pre></div>}
-            {!!isExpanded.EOSAction && <ul>{liActions}</ul>}
+            <div className="block-list-item-action" onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'EOSAction' })}>eosio.token Actions: {dataActions.length}</div>
+            {!!isExpanded.EOSAction && <ul className="action-list">{liActions}</ul>}
         </li>
     })
 
-    return <ul>
+    return <ol className="block-list">
         {liBlocks}
-    </ul>
+    </ol>
 }
 
 export default BlockList

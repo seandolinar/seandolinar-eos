@@ -1,7 +1,144 @@
-body {
-    
+html, body {
+    box-sizing: border-box;
+    * {
+        box-sizing: inherit;
+    }
 }
 
 pre {
     white-space: normal;
+}
+
+ul, ul li {
+    list-style: none;
+    padding: 0;
+}
+
+ol, ol li {
+    padding: 0;
+}
+
+
+//components
+
+#root-eos-blockchain {
+    font-family: Tahoma, Geneva, sans-serif;
+    max-width: 40em;
+    margin: auto;
+
+
+    button {
+        font-family: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        padding: .4em 1em;
+    }
+
+    .block-list {
+        font-size: .9rem;
+
+        .block-list-item {
+            border: 1px solid #000;
+            margin: 1em 0;
+
+            pre {
+                overflow: auto;
+                max-height: 20em;
+                margin: 1em 0;
+                background-color: #ddeeff;
+            }
+
+        }
+
+        .block-list-item-header {
+            padding: .6em;
+            background-color: #ddd;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+
+            &:after {
+                content: 'Expand';
+                display: block;
+                position: absolute;
+                background-color: #ddd;
+                right: 1em;
+                top: 2em;
+            }
+
+            &:hover {
+                &:after {
+                    color: steelblue;
+                }
+            }
+        }
+
+        .block-list-item-action {
+            cursor: pointer;
+            padding: .6em;
+            position: relative;
+
+
+            &:after {
+                content: 'View EOS Token Actions';
+                display: block;
+                position: absolute;
+                right: 1em;
+                top: .6em;               
+            }
+            &:hover {
+                background-color: #f0f0f0;
+                &:after {
+                    color: lightsalmon;
+                }
+            }
+        }
+
+        .action-list {
+            // display: grid;
+            // grid-template-columns: repeat(4, 1fr);
+            // grid-column-gap: 1em;
+            
+            .action-list-item {
+                padding: .2em;
+                background-color: #ffd3a7;
+                border: 1px solid #000;
+                margin: 1em 0;
+                // text-align: center;
+    
+                button {
+                    margin: .2em 0 1em;
+                }
+    
+    
+                .template-abi {
+                    padding: 1em;
+                    font-size: .8em;
+                }
+            }
+        }
+    }
+
+    
+
+    
+
+    .button-update {
+        font-size: 1.2em;
+        border: none;
+        background-color: slategray;
+        color: #fff;
+        transition: background-color 100ms ease;
+
+        &:hover {
+            background-color: rgba(slategray, .8);
+        }
+
+        &:active {
+            background-color: rgba(slategray, .1);
+            outline: none;
+        }
+    }
 }

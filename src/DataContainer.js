@@ -15,19 +15,6 @@ const DataContainer = ({children}) => {
     async function getDataBlocks()  {
         const data = [];
 
-        const getBlock = (res) => {
-            return apiGetBlock(res.last_irreversible_block_id)
-        }
-
-        const getBlockPrev = (res) => {
-            data.push(res)
-            return apiGetBlock(res.previous)
-        }
-
-        const setData = () => {
-            setDataBlocks(data);
-        }
-
         const respInfo = await apiGetInfo();
 
         let respBlock;
@@ -40,9 +27,12 @@ const DataContainer = ({children}) => {
                 respBlock = await apiGetBlock(respBlock.previous);
             }            
             data.push({data: respBlock, isExpanded: {Raw: false, EOSAction: false}});
+            
+            setDataBlocks([...data]);
+
         }
 
-        setDataBlocks(data);
+        // setDataBlocks(data);
 
     };
 
@@ -60,17 +50,6 @@ const DataContainer = ({children}) => {
     
 
     const toggleBlockExpand = ({blockId, type}) => {
-        const dataBlocksToggled = dataBlocks.map(obj => {
-            if (obj.data.id === blockId) {
-                obj.isExpanded[type] = !obj.isExpanded[type];
-            }
-            return obj
-        })
-
-        setDataBlocks(dataBlocksToggled);
-    }
-
-    const toggleEOSActionDetail = ({blockId, type}) => {
         const dataBlocksToggled = dataBlocks.map(obj => {
             if (obj.data.id === blockId) {
                 obj.isExpanded[type] = !obj.isExpanded[type];
