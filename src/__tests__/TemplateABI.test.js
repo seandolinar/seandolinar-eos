@@ -17,7 +17,7 @@ const mockProps = {
             from: 'testFrom',
             quantity: 100,
             to: 'testTo',
-        },
+        }
     }
 }
 

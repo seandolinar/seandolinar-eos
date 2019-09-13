@@ -5,7 +5,7 @@ import Mustache from 'mustache';
 const TemplateABI =  ({actionABI=null, actionData: { data: contractData = {}}}) => {
 
     // catches empty or bad ABI return
-    if (!actionABI || !actionABI.abi.actions || !actionABI.abi.structs)  {
+    if (!actionABI || !actionABI.abi.actions)  {
         return null;
     }
 
