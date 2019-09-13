@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches previous snapshot 1`] = `
+Array [
+  <div>
+    a01
+  </div>,
+  <div>
+    2019-09-13T13:01:04.500
+  </div>,
+  <div>
+    Total Transactions: 
+    9999
+  </div>,
+  <div>
+    Actions: 
+    555
+  </div>,
+]
+`;

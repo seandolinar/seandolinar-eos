@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 
 import { ContextBlock } from '../context';
 
-import TemplateABI from './TemplateABI';
+import BlockHeader from './BlockHeader';
+import ActionItem from './ActionItem';
 
-const BlockList = ({ onClick, children }) => {
+const BlockList = () => {
 
     const {
         dataBlocks,
@@ -12,14 +13,15 @@ const BlockList = ({ onClick, children }) => {
         methods
     } = useContext(ContextBlock);
 
-    const li = dataBlocks.map(({ data, isExpanded }, index) => {
+    const liBlocks = dataBlocks.map(({ data, isExpanded }, index) => {
 
         if (!data.transactions) {
             return <li key={index}></li>
         }
 
-        const countTransactions = data.transactions.length;
-        const countActions = data.transactions.reduce((prev, cur) => {
+        const count = {};
+        count.transactions = data.transactions.length;
+        count.actions = data.transactions.reduce((prev, cur) => {
 
             if (!cur.trx || !cur.trx.transaction) {
                 return prev;
@@ -45,25 +47,20 @@ const BlockList = ({ onClick, children }) => {
                 return abi.actionId === `${obj.account}-${index}`
             })
 
-            return <li key={`${obj.account}-${index}`}>
-                <div>{obj.account}</div>
-                <div>{obj.name}</div>
-                {!actionABI ?
-                    <button onClick={() => methods.getDataABI({ blockId: data.id, actionId: `${obj.account}-${index}`, name: obj.account })}>Get ABI</button> :
-                    <button onClick={() => methods.destroyDataABI({ blockId: data.id, actionId: `${obj.account}-${index}`, name: obj.account })}>Close ABI</button>
-                }
-                <TemplateABI actionABI={actionABI} actionData={obj} />
-            </li>
-        })
+            return <ActionItem 
+                        data={data}
+                        obj={obj}
+                        actionABI={actionABI}
+                        methods={methods}
+                        index={index}
+                    />
+        });
 
 
 
         return <li key={data.id}>
             <div onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'Raw' })}>
-                <div>{data.id}</div>
-                <div>{data.timestamp}</div>
-                <div>Total Transactions: {countTransactions}</div>
-                <div>Actions: {countActions}</div>
+                <BlockHeader data={data} count={count} />
             </div>
             <div onClick={() => methods.toggleBlockExpand({ blockId: data.id, type: 'EOSAction' })}>eosio.token Actions: {dataActions.length}</div>
             {!!isExpanded.Raw && <div><pre>{JSON.stringify(data)}</pre></div>}
@@ -72,7 +69,7 @@ const BlockList = ({ onClick, children }) => {
     })
 
     return <ul>
-        {li}
+        {liBlocks}
     </ul>
 }
 

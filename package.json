@@ -33,11 +33,13 @@
     "css-loader": "^3.2.0",
     "jest": "^24.9.0",
     "node-sass": "^4.12.0",
+    "react-test-renderer": "^16.9.0",
     "sass-loader": "^8.0.0",
     "webpack": "^4.39.3",
     "webpack-dev-server": "^3.8.0"
   },
   "jest": {
+    "verbose": true,
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/$1",
       "\\.(css|less|scss)$": "<rootDir>/src/__mocks__/style.js"

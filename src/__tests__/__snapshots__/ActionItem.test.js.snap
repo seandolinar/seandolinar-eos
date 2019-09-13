@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches previous snapshot: ActionItem 1`] = `
+<li>
+  <div>
+    testAccount
+  </div>
+  <div>
+    testName
+  </div>
+  <button
+    onClick={[Function]}
+  >
+    Close ABI
+  </button>
+</li>
+`;
