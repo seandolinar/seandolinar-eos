@@ -2,6 +2,7 @@
 
 exports[`matches previous snapshot: TemplateABI 1`] = `
 <div
+  className="template-abi"
   dangerouslySetInnerHTML={
     Object {
       "__html": "## Transfer Terms & Conditions↵↵I, testFrom, certify the following to be true to the best of my knowledge:↵↵1. I certify that 100 is not the proceeds of fraudulent or violent activities.↵2. I certify that, to the best of my knowledge, testTo is not supporting initiation of violence against others.↵3. I have disclosed any contractual terms & conditions with respect to 100 to testTo.↵↵I understand that funds transfers are not reversible after the 1000ms seconds or other delay as configured by testFrom's permissions.↵↵If this action fails to be irreversibly confirmed after receiving goods or services from 'testTo', I agree to either return the goods or services or resend 100 in a timely manner.↵",

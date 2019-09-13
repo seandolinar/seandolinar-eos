@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches previous snapshot: ActionItem 1`] = `
-<li>
+<li
+  className="action-list-item"
+>
   <div>
     testAccount
-  </div>
-  <div>
+     - 
     testName
   </div>
   <button
