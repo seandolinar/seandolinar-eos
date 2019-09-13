@@ -2,7 +2,7 @@ import React, {useState, useContext, useEffect} from 'react';
 
 import {ContextBlock} from './context';
 
-import {apiGetInfo, apiGetBlock, apiGetABI} from '@src/data/api';
+import {apiGetInfo, apiGetBlock, apiGetABI} from './data/api.js';
 
 
 const DataContainer = ({children}) => {

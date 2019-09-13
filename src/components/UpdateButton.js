@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import { ContextBlock } from '@src/context';
+import { ContextBlock } from '../context';
 
 export default ({onClick, children}) => {
 

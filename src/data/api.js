@@ -1,5 +1,7 @@
 const { JsonRpc } = require('eosjs');
 
+const fetch = require('node-fetch'); 
+
 const rpc = new JsonRpc('https://api.eosnewyork.io', { fetch });
 
 export const apiGetInfo = () => rpc.get_info();
